@@ -21,7 +21,7 @@ class AuthService extends ChangeNotifier {
 
   // Your specified middleware endpoint
   // Use the AWS API Gateway endpoint
-  final String apiUrl = 'https://pxi1fy1cj9.execute-api.sa-east-1.amazonaws.com/Sandbox/api/KYC/caf-token';
+  final String apiUrl = '';
 
   Future<void> initialize() async {
     final prefs = await SharedPreferences.getInstance();
