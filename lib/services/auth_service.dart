@@ -10,7 +10,7 @@ class AuthService extends ChangeNotifier {
   String? _peopleId;
   
   // Authorization token for the middleware API
-  final String _authorizationToken = "eyJraWQiOiI5M3NPc0FxRUVva0hMT1hCd2IxMmhIUFk1S000XC81SmVTR0pobXIrZE1rWT0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhM2FjZmEwYS1iMDcxLTcwZjYtNDNmYS05NDc3M2U2YWMwOTciLCJkZXZpY2Vfa2V5Ijoic2EtZWFzdC0xXzJkODFiNDg4LWRmODMtNDQ3NC05MDk4LWJmMjA3ZDFjNzNlNSIsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC5zYS1lYXN0LTEuYW1hem9uYXdzLmNvbVwvc2EtZWFzdC0xX0VNb29rakcwYSIsImNsaWVudF9pZCI6IjZiNDN0Mmh0ZDFlNGJxNmphMXNhZjY0YnFxIiwib3JpZ2luX2p0aSI6ImU1ZTdlNGFiLWIyMGQtNDZiNC1hZjVjLTNjMjFiN2Y2NTIyMiIsImV2ZW50X2lkIjoiZGEyYjRhNDctNzExNy00MzIwLTg3OGMtMDliNjdjNmY4ZmExIiwidG9rZW5fdXNlIjoiYWNjZXNzIiwic2NvcGUiOiJhd3MuY29nbml0by5zaWduaW4udXNlci5hZG1pbiIsImF1dGhfdGltZSI6MTc0NDYyMDIyNCwiZXhwIjoxNzQ0NjI3NDI0LCJpYXQiOjE3NDQ2MjAyMjQsImp0aSI6Ijc4N2Y2OGNlLTNkMzEtNDJlOC1iNDNmLWQxNzMyY2IwZWQxZiIsInVzZXJuYW1lIjoiYTNhY2ZhMGEtYjA3MS03MGY2LTQzZmEtOTQ3NzNlNmFjMDk3In0.4h6INeTpDyfO0g7ZLbIAzj9fFQIEJpYEwhrpj43dORm2BzMc2Eg4XOxVWsh-mZNhoPLsvAZrFiEV9P-GAqAWcRE0nYN1GOKZjMBga2RNd1VgG27A6Q5DUlLPp6WVJMfCAR6gnYJJNv43cj-3AyAHboCP9Dt6RPoEdIySYMOsk5Hx8j3bUicPWRT2hf3CgTqSYwAUmptwUFSWJ0QMOQe2n1T4qdr5LvJ7-rcGhz0mZ-YJykAGujXab-2lGmnP5YFvml1ChPEWLctvBzFoha7jQOwn9pdCzCLV3ru3_E_cMMjUKRZsHcLjy7bz-8TFJb8S2qVfd0eChXT2qdy8K5fSgg";
+  final String _authorizationToken = "";
 
   String? get token => _token;
   int? get expiresAt => _expiresAt;
@@ -20,14 +20,14 @@ class AuthService extends ChangeNotifier {
       _expiresAt! > (DateTime.now().millisecondsSinceEpoch ~/ 1000);
 
   // Your specified middleware endpoint
-  // Use 10.0.2.2 to access the host machine's localhost from the emulator
-  final String apiUrl = 'https://middleware-api-sandbox.bumba.global/api/KYC/caf-token';
+  // Use the AWS API Gateway endpoint
+  final String apiUrl = 'https://pxi1fy1cj9.execute-api.sa-east-1.amazonaws.com/Sandbox/api/KYC/caf-token';
 
   Future<void> initialize() async {
     final prefs = await SharedPreferences.getInstance();
     _token = prefs.getString('caf_token');
     _expiresAt = prefs.getInt('caf_expires_at');
-    _peopleId = prefs.getString('caf_people_id');
+    _peopleId = prefs.getString('caf_people_id');k
     notifyListeners();
   }
 
